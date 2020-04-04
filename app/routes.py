@@ -39,4 +39,4 @@ def interview_func():
 def interview_list_func():
     interviews = interview_repo.fetch_all()
     interview_list = [interview.serialize() for interview in interviews.items]
-    return jsonify(interview_list), 201
+    return jsonify(interview_list), 200
