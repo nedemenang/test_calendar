@@ -9,3 +9,13 @@ class Interview(db.Model):
     time = db.Column(db.DateTime)
     duration = db.Column(db.Integer)
 
+    def serialize(self):
+        s = {to_camel_case(column.name): getattr(self, column.name) for column in self.__table__.columns}
+
+        return s
+
+
+def to_camel_case(snake_str):
+    title_str = snake_str.title().replace("_", "")
+    return title_str[0].lower() + title_str[1:]
+
